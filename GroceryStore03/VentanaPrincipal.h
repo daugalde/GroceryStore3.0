@@ -81,6 +81,7 @@ namespace GroceryStore03 {
 			this->button2->TabIndex = 1;
 			this->button2->Text = L"Usuario";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &VentanaPrincipal::button2_Click);
 			// 
 			// label1
 			// 
@@ -109,6 +110,7 @@ namespace GroceryStore03 {
 			this->button4->TabIndex = 4;
 			this->button4->Text = L"Salir";
 			this->button4->UseVisualStyleBackColor = true;
+			this->button4->Click += gcnew System::EventHandler(this, &VentanaPrincipal::button4_Click);
 			// 
 			// VentanaPrincipal
 			// 
@@ -138,5 +140,10 @@ namespace GroceryStore03 {
 	}
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void button4_Click(System::Object^ sender, System::EventArgs^ e) {
+	this->Close();
+}
+private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

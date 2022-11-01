@@ -42,7 +42,13 @@ arbolBinario_AA_Inventario::arbolBinario_AA_Inventario() {
 arbolBinario_AA_Inventario::~arbolBinario_AA_Inventario() {
     eliminarArbol(&(this->raiz));
 }
-
+void arbolBinario_AA_Inventario::eliminarArbol(nodoBinario_AA_Inventario** raiz) {
+    if (*raiz) {
+        eliminarArbol(&((*raiz)->izq));
+        eliminarArbol(&((*raiz)->der));
+        delete* raiz;
+    }
+}
 void arbolBinario_AA_Inventario::eliminarArbol(nodoBinario_AA_Inventario** raiz) {
     if (*raiz) {
         if (!((*raiz)->izq) && !((*raiz)->der))
@@ -120,4 +126,88 @@ void arbolBinario_AA_Inventario::giro(nodoBinario_AA_Inventario** raiz) {
     nuevaRaiz->der = (*raiz);
 
     (*raiz) = nuevaRaiz;
+}
+void arbolBinario_AA_Inv::borrarNodo(int codigoRuta) {
+    borrarAA(&(this->raiz), codigoRuta);
+}
+
+void arbolBinario_AA_Inventario::borrarAA(nodoBinario_AA_Inventario** raiz, int codigoMarca) {
+    if (*raiz) {
+        if (codigoMarca < (*raiz)->CodigoMarca) {
+            borrarAA(&((*raiz)->izq), codigoMarca);
+        }
+        else if (codigoMarca > (*raiz)->CodigoMarca) {
+            borrarAA(&((*raiz)->der), codigoMarca);
+        }
+        else if (codigoMarca == (*raiz)->CodigoMarca) {
+
+            //Caso 1: 0 hijos
+            if (!(*raiz)->izq && !(*raiz)->der) {
+                delete* raiz;
+                *raiz = NULL;
+            }
+
+            //Caso 2: 1 hijo(Solo existe el hijo derecho)
+            else if (!(*raiz)->izq && (*raiz)->der) {
+                nodoBinario_AA_Inventario* aux = *raiz;
+                *raiz = aux->der;
+                delete aux;
+            }
+            //Caso 3: 2 hijos
+            else if ((*raiz)->izq && (*raiz)->der) {
+                antecesorBorrado(&((*raiz)->izq), raiz);
+                if (!(*raiz)->izq)
+                    decrementarNivel((*raiz)->der);
+
+                if ((*raiz)->izq)
+                    if ((*raiz)->nivel == (*raiz)->izq->nivel)
+                        giro(raiz);
+
+                if ((*raiz)->der)
+                    if ((*raiz)->der->der && ((*raiz)->nivel == (*raiz)->der->der->nivel))
+                        reparto(raiz);
+            }
+            return;
+        }
+        if (!(*raiz)->izq && (*raiz)->der)
+            decrementarNivel((*raiz)->der);
+
+        if ((*raiz)->izq)
+            if ((*raiz)->nivel == (*raiz)->izq->nivel)
+                giro(raiz);
+
+        if ((*raiz)->der)
+            if ((*raiz)->der->der && ((*raiz)->nivel == (*raiz)->der->der->nivel))
+                reparto(raiz);
+
+    }
+}
+
+void arbolBinario_AA_Inventario::antecesorBorrado(nodoBinario_AA_Inventario** nodoIzq, nodoBinario_AA_Inventario** raiz) {
+    if ((*nodoIzq)->der) {
+        antecesorBorrado(&((*nodoIzq)->der), raiz);
+
+        //Tiene hijo izq y no hijo der(Incumple regla, toca giro)
+        if ((*nodoIzq)->izq && !(*nodoIzq)->der) {
+            decrementarNivel((*nodoIzq)->izq);
+            giro(nodoIzq);
+        }
+
+        if ((*nodoIzq)->der)
+            if ((*nodoIzq)->der->der && ((*nodoIzq)->nivel == (*nodoIzq)->der->der->nivel))
+                reparto(nodoIzq);
+    }
+    else {
+        (*raiz)->CodigoMarca = (*nodoIzq)->CodigoMarca;
+        delete* nodoIzq;
+        *nodoIzq = NULL;
+    }
+}
+
+void arbolBinario_AA_Inventario::decrementarNivel(nodoBinario_AA_Inventario* raiz) {
+    if (raiz) {
+        decrementarNivel(raiz->izq);
+        decrementarNivel(raiz->der);
+        raiz->nivel--;
+    }
 }

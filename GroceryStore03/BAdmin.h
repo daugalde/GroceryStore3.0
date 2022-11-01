@@ -18,36 +18,48 @@ public:
 	}
 };
 
-class nodoBinario_Admin {
+class nodoArbolBinario_B {
 public:
 	informacionAdministrador* claves[4] = { 0 };
-	nodoBinario_Admin* ramas[5] = { 0 };
+	nodoArbolBinario_B* ramas[5] = { 0 };
 	int cuentas = 0;
 
-	nodoBinario_Admin() {}
+	nodoArbolBinario_B() {}
 
-	friend class arbolbinario_b_Admin;
+	friend class arbolbinario_b;
 };
 
-class arbolbinario_b_Admin {
+class arbolbinario_b {
 
 private:
-	void buscarNodo(int claveNueva, nodoBinario_Admin** P, bool* encontrado, int* K);
-	void empujar(int CodAdministrador, string nombre, nodoBinario_Admin** R, bool* empujarArriba, informacionAdministrador** Mdna, nodoBinario_Admin** X);
-	void meterHoja(informacionAdministrador** X, nodoBinario_Admin** Xder, nodoBinario_Admin** P, int* K);
-	void dividirNodo(informacionAdministrador* X, nodoBinario_Admin* Xder, nodoBinario_Admin** P, int* K, informacionAdministrador** Mda, nodoBinario_Admin** Mder);
-	void destruirArbol(nodoBinario_Admin* raiz);
-	void insertar(int CodAdministrador, string nombre, nodoBinario_Admin** raiz);
-
+	void buscarNodo(int claveNueva, nodoArbolBinario_B** P, bool* encontrado, int* K);
+	void empujar(int CodAdministrador, string nombre, nodoArbolBinario_B** R, bool* empujarArriba, informacionAdministrador** Mdna, nodoArbolBinario_B** X);
+	void meterHoja(informacionAdministrador** X, nodoArbolBinario_B** Xder, nodoArbolBinario_B** P, int* K);
+	void dividirNodo(informacionAdministrador* X, nodoArbolBinario_B* Xder, nodoArbolBinario_B** P, int* K, informacionAdministrador** Mda, nodoArbolBinario_B** Mder);
+	void destruirArbol(nodoArbolBinario_B* raiz);
+	void insertar(int CodAdministrador, string nombre, nodoArbolBinario_B** raiz);
+	// BORRADO
+	void Eliminar(int contrasena, nodoArbolBinario_B** raiz);
+	void EliminarRegistro(int contrasena, nodoArbolBinario_B** raiz, bool* Encontrado);
+	void Quitar(nodoArbolBinario_B** P, int* K);
+	void Sucesor(nodoArbolBinario_B** P, int* K);
+	void Restablecer(nodoArbolBinario_B** P, int* K);
+	void MoverDerecha(nodoArbolBinario_B** P, int* K);
+	void MoverIzquierda(nodoArbolBinario_B** P, int K);
+	void Combina(nodoArbolBinario_B** P, int K);
 
 public:
-	nodoBinario_Admin* raiz;
+	nodoArbolBinario_B* raiz;
 
-	arbolbinario_b_Admin() : raiz(NULL) {};
-	~arbolbinario_b_Admin();
+	arbolbinario_b() : raiz(NULL) {};
+	~arbolbinario_b();
 
 	void insertarNodo(int CodAdministrador, string nombre);
-	informacionAdministrador* buscarAdmins(nodoBinario_Admin** raiz, int contrasena);
+	informacionAdministrador* buscarAdmins(nodoArbolBinario_B** raiz, int contrasena);
+
+
+	//BORRADO
+	void borrarNodo(int contrasena);
 };
 // **********************************
 // *	COMUNICADOR DE ESTRUCTURA	*
@@ -55,5 +67,5 @@ public:
 
 class estructuraADMIN {
 public:
-	arbolbinario_b_Admin arbolAdministradores;
+	arbolbinario_b arbolAdministradores;
 };
