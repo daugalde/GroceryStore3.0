@@ -1,4 +1,5 @@
 #pragma once
+#include "AdminDashboard.h"
 
 namespace Program {
 
@@ -65,7 +66,7 @@ namespace Program {
 			this->label1->AutoSize = true;
 			this->label1->Location = System::Drawing::Point(215, 78);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(119, 25);
+			this->label1->Size = System::Drawing::Size(146, 31);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Main Menu";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::BottomRight;
@@ -100,7 +101,7 @@ namespace Program {
 			// 
 			// MainMenuGrocery
 			// 
-			this->AutoScaleDimensions = System::Drawing::SizeF(12, 25);
+			this->AutoScaleDimensions = System::Drawing::SizeF(15, 30);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(568, 502);
 			this->Controls->Add(this->button3);
@@ -111,6 +112,7 @@ namespace Program {
 				static_cast<System::Byte>(0)));
 			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"MainMenuGrocery";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainMenuGrocery";
 			this->ResumeLayout(false);
 			this->PerformLayout();
@@ -119,7 +121,10 @@ namespace Program {
 #pragma endregion
 
 	private: System::Void adminBtn_Click(System::Object^ sender, System::EventArgs^ e) {
-		MessageBox::Show("Admin window should go here");
+		this->Hide();
+		AdminDashboard ^dashboard = gcnew AdminDashboard(this);
+
+		dashboard->ShowDialog();
 	}
 	};
 }

@@ -134,6 +134,9 @@
     <ClInclude Include="..\DataStructures\Queue.h" />
     <ClInclude Include="..\DataStructures\SoldItem.h" />
     <ClInclude Include="..\DataStructures\Store.h" />
+    <ClInclude Include="AdminDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainMenuGrocery.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -145,6 +148,7 @@
     <ClCompile Include="..\DataStructures\GroceryManager.cpp" />
     <ClCompile Include="..\DataStructures\List.cpp" />
     <ClCompile Include="..\DataStructures\Queue.cpp" />
+    <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="Program.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +159,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenuGrocery.resx">
       <DependentUpon>MainMenuGrocery.h</DependentUpon>
     </EmbeddedResource>
