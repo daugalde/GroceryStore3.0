@@ -123,7 +123,6 @@ namespace Program {
 	private: System::Void adminBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
 		AdminDashboard ^dashboard = gcnew AdminDashboard(this);
-
 		dashboard->ShowDialog();
 	}
 	};
