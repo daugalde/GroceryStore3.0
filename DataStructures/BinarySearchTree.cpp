@@ -50,7 +50,7 @@ string BinarySearchTree::displayNodeObjectInfo(BinarySearchNode*& node) {
     if (node != NULL)
     {
         info = info + displayNodeObjectInfo(node->getLeft());
-        info = info + to_string(node->value->getId()) + "\t" + node->value->getName() + "\n";
+        info = info + to_string(node->value->getId()) + "\t" + node->value->getName() + "\r\n";
         info = info + displayNodeObjectInfo(node->getRight());
     }
     return info;
@@ -67,5 +67,6 @@ void BinarySearchTree::add(Object* value) {
 }
 
 string BinarySearchTree::getInfo() {
-    return this->displayNodeObjectInfo(this->root);
+    string res = this->displayNodeObjectInfo(this->root);
+    return res;
 }

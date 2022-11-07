@@ -24,7 +24,11 @@ namespace Program {
 			this->gm = gm;
 			InitializeComponent();
 
-			this->viewer->Text =  gcnew String(gm->getStore().getAisles()->getInfo().c_str());;
+			this->viewer->Text =  gcnew String(gm->getStore().getAisles()->getInfo().c_str());
+
+			this->comboBox1->Items->Add("Insert");
+			this->comboBox1->Items->Add("Modify");
+			this->comboBox1->Items->Add("Delete");
 		}
 
 		AdminDashboard(void)
@@ -220,6 +224,7 @@ namespace Program {
 			this->button1->TabIndex = 13;
 			this->button1->Text = L"Aisle Only";
 			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &AdminDashboard::button1_Click);
 			// 
 			// button2
 			// 
@@ -281,7 +286,6 @@ namespace Program {
 			this->viewer->Name = L"viewer";
 			this->viewer->Size = System::Drawing::Size(488, 640);
 			this->viewer->TabIndex = 20;
-			this->viewer->TextChanged += gcnew System::EventHandler(this, &AdminDashboard::viewer_TextChanged);
 			// 
 			// AdminDashboard
 			// 
@@ -325,8 +329,8 @@ namespace Program {
 	private: System::Void AdminDashboard_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		obj->Show();
 	}
-	
-	private: System::Void viewer_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
 };
 }
