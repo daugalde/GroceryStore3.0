@@ -75,6 +75,12 @@
     <ClInclude Include="AdminDashboard.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\DataStructures\BAdmin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SellerDashboard.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\DataStructures\BinarySearchNode.cpp">
@@ -99,6 +105,12 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="AdminDashboard.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\DataStructures\BAdmin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SellerDashboard.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

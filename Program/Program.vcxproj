@@ -117,6 +117,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="..\DataStructures\Aisle.h" />
+    <ClInclude Include="..\DataStructures\BAdmin.h" />
     <ClInclude Include="..\DataStructures\BinarySearchNode.h" />
     <ClInclude Include="..\DataStructures\BinarySearchTree.h" />
     <ClInclude Include="..\DataStructures\Client.h" />
@@ -140,8 +141,12 @@
     <ClInclude Include="MainMenuGrocery.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="SellerDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\DataStructures\BAdmin.cpp" />
     <ClCompile Include="..\DataStructures\BinarySearchNode.cpp" />
     <ClCompile Include="..\DataStructures\BinarySearchTree.cpp" />
     <ClCompile Include="..\DataStructures\FileLoader.cpp" />
@@ -150,6 +155,7 @@
     <ClCompile Include="..\DataStructures\Queue.cpp" />
     <ClCompile Include="AdminDashboard.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="SellerDashboard.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
