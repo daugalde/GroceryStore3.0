@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../DataStructures/GroceryManager.h"
 namespace Program {
 
 	using namespace System;
@@ -17,9 +17,11 @@ namespace Program {
 
 	public:
 		Form^ obj;
-		AdminDashboard(Form ^obj1)
+		GroceryManager* gm;
+		AdminDashboard(Form ^obj1, GroceryManager* gm)
 		{
 			obj = obj1;
+			this->gm = gm;
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -316,22 +318,15 @@ namespace Program {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminDashboard";
 			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &AdminDashboard::AdminDashboard_FormClosed);
-			this->Load += gcnew System::EventHandler(this, &AdminDashboard::AdminDashboard_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
 		}
 #pragma endregion
-	private: System::Void AdminDashboard_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
+
 	private: System::Void AdminDashboard_FormClosed(System::Object^ sender, System::Windows::Forms::FormClosedEventArgs^ e) {
 		obj->Show();
 	}
-	private: System::Void button8_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button7_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
-private: System::Void button6_Click(System::Object^ sender, System::EventArgs^ e) {
-	}
+	
 };
 }

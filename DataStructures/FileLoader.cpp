@@ -72,7 +72,7 @@ BinarySearchTree* FileLoader::ReadAndLoadAilesFile() {
 
 			aisle->setName(str);
 
-			ReadAndLoadProductAileFile(aisle);
+			//ReadAndLoadProductAileFile(aisle);
 
 			tree->add(aisle);
 		}

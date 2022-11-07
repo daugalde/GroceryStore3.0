@@ -1,5 +1,6 @@
 #pragma once
 #include "AdminDashboard.h"
+#include "../DataStructures/GroceryManager.h"
 
 namespace Program {
 
@@ -15,9 +16,13 @@ namespace Program {
 	/// </summary>
 	public ref class MainMenuGrocery : public System::Windows::Forms::Form
 	{
+
+		GroceryManager* gm = new GroceryManager;
+
 	public:
 		MainMenuGrocery(void)
 		{
+			gm->InitStoreLoad();
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -122,7 +127,7 @@ namespace Program {
 
 	private: System::Void adminBtn_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		AdminDashboard ^dashboard = gcnew AdminDashboard(this);
+		AdminDashboard^ dashboard = gcnew AdminDashboard(this, this->gm);
 		dashboard->ShowDialog();
 	}
 	};
