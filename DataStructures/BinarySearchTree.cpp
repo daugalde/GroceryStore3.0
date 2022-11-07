@@ -67,6 +67,5 @@ void BinarySearchTree::add(Object* value) {
 }
 
 string BinarySearchTree::getInfo() {
-    string res = this->displayNodeObjectInfo(this->root);
-    return res;
+    return  this->displayNodeObjectInfo(this->root);
 }
