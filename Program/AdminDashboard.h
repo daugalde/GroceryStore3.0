@@ -1,7 +1,7 @@
 #pragma once
 #include "../DataStructures/GroceryManager.h"
-namespace Program {
 
+namespace Program {
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -23,9 +23,8 @@ namespace Program {
 			obj = obj1;
 			this->gm = gm;
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
+
+			this->viewer->Text =  gcnew String(gm->getStore().getAisles()->getInfo().c_str());;
 		}
 
 		AdminDashboard(void)
@@ -67,9 +66,7 @@ namespace Program {
 	private: System::Windows::Forms::Button^ button5;
 	private: System::Windows::Forms::Label^ label9;
 	private: System::Windows::Forms::ComboBox^ comboBox1;
-	private: System::Windows::Forms::TextBox^ textBox6;
-
-
+	private: System::Windows::Forms::TextBox^ viewer;
 
 
 	private:
@@ -105,7 +102,7 @@ namespace Program {
 			this->button5 = (gcnew System::Windows::Forms::Button());
 			this->label9 = (gcnew System::Windows::Forms::Label());
 			this->comboBox1 = (gcnew System::Windows::Forms::ComboBox());
-			this->textBox6 = (gcnew System::Windows::Forms::TextBox());
+			this->viewer = (gcnew System::Windows::Forms::TextBox());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -277,20 +274,21 @@ namespace Program {
 			this->comboBox1->Size = System::Drawing::Size(183, 39);
 			this->comboBox1->TabIndex = 19;
 			// 
-			// textBox6
+			// viewer
 			// 
-			this->textBox6->Location = System::Drawing::Point(994, 190);
-			this->textBox6->Multiline = true;
-			this->textBox6->Name = L"textBox6";
-			this->textBox6->Size = System::Drawing::Size(488, 640);
-			this->textBox6->TabIndex = 20;
+			this->viewer->Location = System::Drawing::Point(994, 190);
+			this->viewer->Multiline = true;
+			this->viewer->Name = L"viewer";
+			this->viewer->Size = System::Drawing::Size(488, 640);
+			this->viewer->TabIndex = 20;
+			this->viewer->TextChanged += gcnew System::EventHandler(this, &AdminDashboard::viewer_TextChanged);
 			// 
 			// AdminDashboard
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(16, 31);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1567, 949);
-			this->Controls->Add(this->textBox6);
+			this->Controls->Add(this->viewer);
 			this->Controls->Add(this->comboBox1);
 			this->Controls->Add(this->label9);
 			this->Controls->Add(this->button5);
@@ -313,7 +311,7 @@ namespace Program {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->Margin = System::Windows::Forms::Padding(6, 6, 6, 6);
+			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"AdminDashboard";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"AdminDashboard";
@@ -328,5 +326,7 @@ namespace Program {
 		obj->Show();
 	}
 	
+	private: System::Void viewer_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
 };
 }
