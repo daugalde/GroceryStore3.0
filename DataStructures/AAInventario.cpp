@@ -128,8 +128,8 @@ void arbolBinario_AA_Inventario::giro(nodoBinario_AA_Inventario** raiz) {
 
     (*raiz) = nuevaRaiz;
 }
-void arbolBinario_AA_Inv::borrarNodo(int codigoRuta) {
-    borrarAA(&(this->raiz), codigoRuta);
+void arbolBinario_AA_Inventario::borrarNodo(int codigoMarca) {
+    borrarAA(&(this->raiz), codigoMarca);
 }
 
 void arbolBinario_AA_Inventario::borrarAA(nodoBinario_AA_Inventario** raiz, int codigoMarca) {
