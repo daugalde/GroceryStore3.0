@@ -49,13 +49,14 @@ void arbolBinario_AA_Inventario::eliminarArbol(nodoBinario_AA_Inventario** raiz)
         delete* raiz;
     }
 }
-void arbolBinario_AA_Inventario::eliminarArbol(nodoBinario_AA_Inventario** raiz) {
+
+void arbolBinario_AA_Inventario::eliminarArbolInner(nodoBinario_AA_Inventario** raiz) {
     if (*raiz) {
         if (!((*raiz)->izq) && !((*raiz)->der))
             delete* raiz;
         else {
-            eliminarArbol(&((*raiz)->izq));
-            eliminarArbol(&((*raiz)->der));
+            eliminarArbolInner(&((*raiz)->izq));
+            eliminarArbolInner(&((*raiz)->der));
             delete* raiz;
         }
     }
