@@ -117,6 +117,7 @@ namespace Program {
 			this->label1->Size = System::Drawing::Size(241, 32);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Dashboard Admin";
+			this->label1->Click += gcnew System::EventHandler(this, &AdminDashboard::label1_Click);
 			// 
 			// label2
 			// 
@@ -126,6 +127,7 @@ namespace Program {
 			this->label2->Size = System::Drawing::Size(151, 32);
 			this->label2->TabIndex = 1;
 			this->label2->Text = L"Insert Data";
+			this->label2->Click += gcnew System::EventHandler(this, &AdminDashboard::label2_Click);
 			// 
 			// label3
 			// 
@@ -278,10 +280,11 @@ namespace Program {
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(183, 39);
 			this->comboBox1->TabIndex = 19;
+			this->comboBox1->SelectedIndexChanged += gcnew System::EventHandler(this, &AdminDashboard::comboBox1_SelectedIndexChanged);
 			// 
 			// viewer
 			// 
-			this->viewer->Location = System::Drawing::Point(994, 190);
+			this->viewer->Location = System::Drawing::Point(999, 190);
 			this->viewer->Multiline = true;
 			this->viewer->Name = L"viewer";
 			this->viewer->Size = System::Drawing::Size(488, 640);
@@ -332,5 +335,11 @@ namespace Program {
 
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void comboBox1_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+}
 };
 }

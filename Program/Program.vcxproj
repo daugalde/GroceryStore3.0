@@ -116,12 +116,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="..\DataStructures\AAInventario.h" />
     <ClInclude Include="..\DataStructures\Aisle.h" />
     <ClInclude Include="..\DataStructures\BAdmin.h" />
+    <ClInclude Include="..\DataStructures\BClientes.h" />
     <ClInclude Include="..\DataStructures\BinarySearchNode.h" />
     <ClInclude Include="..\DataStructures\BinarySearchTree.h" />
+    <ClInclude Include="..\DataStructures\BVendedor.h" />
     <ClInclude Include="..\DataStructures\Client.h" />
     <ClInclude Include="..\DataStructures\FileLoader.h" />
+    <ClInclude Include="..\DataStructures\GrafCiudades.h" />
     <ClInclude Include="..\DataStructures\GroceryManager.h" />
     <ClInclude Include="..\DataStructures\HotItem.h" />
     <ClInclude Include="..\DataStructures\Inventory.h" />
@@ -146,10 +150,14 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\DataStructures\AAInventario.cpp" />
     <ClCompile Include="..\DataStructures\BAdmin.cpp" />
+    <ClCompile Include="..\DataStructures\BClientes.cpp" />
     <ClCompile Include="..\DataStructures\BinarySearchNode.cpp" />
     <ClCompile Include="..\DataStructures\BinarySearchTree.cpp" />
+    <ClCompile Include="..\DataStructures\BVendedor.cpp" />
     <ClCompile Include="..\DataStructures\FileLoader.cpp" />
+    <ClCompile Include="..\DataStructures\GrafCiudades.cpp" />
     <ClCompile Include="..\DataStructures\GroceryManager.cpp" />
     <ClCompile Include="..\DataStructures\List.cpp" />
     <ClCompile Include="..\DataStructures\Queue.cpp" />
@@ -170,6 +178,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainMenuGrocery.resx">
       <DependentUpon>MainMenuGrocery.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellerDashboard.resx">
+      <DependentUpon>SellerDashboard.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

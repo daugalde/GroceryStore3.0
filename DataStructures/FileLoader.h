@@ -6,6 +6,7 @@
 #include "ProductAisle.h"
 #include "List.h"
 #include "Store.h"
+#include "BAdmin.h"
 
 using namespace std;
 
@@ -26,6 +27,8 @@ public:
 	void ReadAndLoadProductAileFile(Aisle* aisle);
 
 	void ReadAndLoadProductsFile(ProductAisle* productAisle);
+
+	void ReadAndLoadAdminsFile(nodoArbolBinario_B* admins);
 
 	List ReadAndLoadInvetoryFile();
 

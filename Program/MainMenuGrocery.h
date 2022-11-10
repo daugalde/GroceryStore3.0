@@ -1,5 +1,6 @@
 #pragma once
 #include "AdminDashboard.h"
+#include "SellerDashboard.h"
 #include "../DataStructures/GroceryManager.h"
 
 namespace Program {
@@ -45,7 +46,9 @@ namespace Program {
 	protected:
 
 	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ sellerBtn;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+
 
 	private:
 		/// <summary>
@@ -60,16 +63,19 @@ namespace Program {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainMenuGrocery::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->adminBtn = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->sellerBtn = (gcnew System::Windows::Forms::Button());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Location = System::Drawing::Point(215, 78);
+			this->label1->Location = System::Drawing::Point(359, 125);
 			this->label1->Name = L"label1";
 			this->label1->Size = System::Drawing::Size(146, 31);
 			this->label1->TabIndex = 0;
@@ -78,7 +84,7 @@ namespace Program {
 			// 
 			// adminBtn
 			// 
-			this->adminBtn->Location = System::Drawing::Point(150, 124);
+			this->adminBtn->Location = System::Drawing::Point(304, 191);
 			this->adminBtn->Name = L"adminBtn";
 			this->adminBtn->Size = System::Drawing::Size(247, 55);
 			this->adminBtn->TabIndex = 1;
@@ -88,28 +94,41 @@ namespace Program {
 			// 
 			// button2
 			// 
-			this->button2->Location = System::Drawing::Point(150, 202);
+			this->button2->Location = System::Drawing::Point(304, 274);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(247, 55);
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Client";
 			this->button2->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// sellerBtn
 			// 
-			this->button3->Location = System::Drawing::Point(150, 282);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(247, 55);
-			this->button3->TabIndex = 3;
-			this->button3->Text = L"Seller";
-			this->button3->UseVisualStyleBackColor = true;
+			this->sellerBtn->Location = System::Drawing::Point(304, 357);
+			this->sellerBtn->Name = L"sellerBtn";
+			this->sellerBtn->Size = System::Drawing::Size(247, 55);
+			this->sellerBtn->TabIndex = 3;
+			this->sellerBtn->Text = L"Seller";
+			this->sellerBtn->UseVisualStyleBackColor = true;
+			this->sellerBtn->Click += gcnew System::EventHandler(this, &MainMenuGrocery::SellerBtn);
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(224)), static_cast<System::Int32>(static_cast<System::Byte>(224)),
+				static_cast<System::Int32>(static_cast<System::Byte>(224)));
+			this->pictureBox1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.BackgroundImage")));
+			this->pictureBox1->Location = System::Drawing::Point(304, 49);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(272, 46);
+			this->pictureBox1->TabIndex = 4;
+			this->pictureBox1->TabStop = false;
 			// 
 			// MainMenuGrocery
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 30);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(568, 502);
-			this->Controls->Add(this->button3);
+			this->ClientSize = System::Drawing::Size(895, 476);
+			this->Controls->Add(this->pictureBox1);
+			this->Controls->Add(this->sellerBtn);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->adminBtn);
 			this->Controls->Add(this->label1);
@@ -119,6 +138,8 @@ namespace Program {
 			this->Name = L"MainMenuGrocery";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"MainMenuGrocery";
+			this->Load += gcnew System::EventHandler(this, &MainMenuGrocery::MainMenuGrocery_Load);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -130,5 +151,13 @@ namespace Program {
 		AdminDashboard^ dashboard = gcnew AdminDashboard(this, this->gm);
 		dashboard->ShowDialog();
 	}
-	};
+	private: System::Void SellerBtn(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		SellerDashboard^ dashboard = gcnew SellerDashboard(this, this->gm);
+		dashboard->ShowDialog();
+		
+	}
+private: System::Void MainMenuGrocery_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

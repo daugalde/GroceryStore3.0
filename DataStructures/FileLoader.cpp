@@ -8,7 +8,7 @@
 #include "Product.h"
 #include "Client.h"
 #include "Inventory.h"
-
+#include "BAdmin.h"
 using namespace std;
 
 FileLoader::~FileLoader()
@@ -36,6 +36,7 @@ Store FileLoader::LoadFiles() {
 
 	store.setClients(ReadAndLoadClientFile());
 
+	
 	return store;
 }
 
