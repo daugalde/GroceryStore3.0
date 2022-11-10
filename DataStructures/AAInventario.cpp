@@ -62,35 +62,35 @@ void arbolBinario_AA_Inventario::eliminarArbolInner(nodoBinario_AA_Inventario** 
     }
 }
 
-void arbolBinario_AA_Inventario::InsertarNodoAA(nodoBinario_AA_Inventario** raiz, int CodigoPasillo, int CodigoProducto, int CodigoMarca, string nombre, int CantStock, int CodCan, int nivel) {
-    if (!(*raiz) || !((*raiz)->izq))
-        insertarDerecho(raiz, CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, nivel);
-    else {
-        if (CodigoMarca > (*raiz)->CodigoMarca)
-            InsertarNodoAA(&((*raiz)->der), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, (*raiz)->nivel + 1);
-
-        else
-            InsertarNodoAA(&((*raiz)->izq), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, (*raiz)->nivel + 1);
-    }
-    if ((*raiz)->izq)
-        if ((*raiz)->nivel == (*raiz)->izq->nivel)
-            giro(raiz);
-
-    if ((*raiz)->der)
-        if ((*raiz)->der->der && ((*raiz)->nivel == (*raiz)->der->der->nivel))
-            reparto(raiz);
+void arbolBinario_AA_Inventario::InsertarNodoAA(nodoBinario_AA_Inventario** raiz, Object* obj, int nivel) {
+  // if (!(*raiz) || !((*raiz)->izq))
+  //     insertarDerecho(raiz, CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, nivel);
+  // else {
+  //     if (CodigoMarca > (*raiz)->CodigoMarca)
+  //         InsertarNodoAA(&((*raiz)->der), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, (*raiz)->nivel + 1);
+  //
+  //     else
+  //         InsertarNodoAA(&((*raiz)->izq), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, (*raiz)->nivel + 1);
+  // }
+  // if ((*raiz)->izq)
+  //     if ((*raiz)->nivel == (*raiz)->izq->nivel)
+  //         giro(raiz);
+  //
+  // if ((*raiz)->der)
+  //     if ((*raiz)->der->der && ((*raiz)->nivel == (*raiz)->der->der->nivel))
+  //         reparto(raiz);
 }
 
-void arbolBinario_AA_Inventario::insertarDerecho(nodoBinario_AA_Inventario** raiz, int CodigoPasillo, int CodigoProducto, int CodigoMarca, string nombre, int CantStock, int CodCan, int nivel) {
+void arbolBinario_AA_Inventario::insertarDerecho(nodoBinario_AA_Inventario** raiz, Object* obj, int nivel) {
     if (!(*raiz)) {
-        *raiz = new nodoBinario_AA_Inventario(CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan);
+        *raiz = new nodoBinario_AA_Inventario(obj);
         (*raiz)->nivel = nivel;
     }
     else {
-        if (CodigoMarca > (*raiz)->CodigoMarca)
-            insertarDerecho(&((*raiz)->der), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, nivel);
+        if (obj->getId() > (*raiz)->getValue()->getId()) //CodigoMarca
+            insertarDerecho(&((*raiz)->der), obj, nivel);
         else {
-            nodoBinario_AA_Inventario* nuevo = new nodoBinario_AA_Inventario(CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan);
+            nodoBinario_AA_Inventario* nuevo = new nodoBinario_AA_Inventario(obj);
             nuevo->nivel = nivel;
 
             nuevo->der = *raiz;
@@ -99,13 +99,12 @@ void arbolBinario_AA_Inventario::insertarDerecho(nodoBinario_AA_Inventario** rai
     }
 }
 
-void arbolBinario_AA_Inventario::InsertarNodo(int CodigoPasillo, int CodigoProducto, int CodigoMarca, string nombre, int CantStock, int CodCan) {
+void arbolBinario_AA_Inventario::InsertarNodo(Object* obj) {
     if (!(this->raiz)) {
-        InsertarNodoAA(&(this->raiz), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, 0);
+        //InsertarNodoAA(&(this->raiz), obj);
     }
     else {
-        InsertarNodoAA(&(this->raiz), CodigoPasillo, CodigoProducto, CodigoMarca, nombre, CantStock, CodCan, this->raiz->nivel);
-
+        //InsertarNodoAA(&(this->raiz), obj, this->raiz->getNivel());
     }
 }
 
@@ -129,7 +128,7 @@ void arbolBinario_AA_Inventario::giro(nodoBinario_AA_Inventario** raiz) {
     (*raiz) = nuevaRaiz;
 }
 void arbolBinario_AA_Inventario::borrarNodo(int codigoMarca) {
-    borrarAA(&(this->raiz), codigoMarca);
+    //borrarAA(&(this->raiz), codigoMarca);
 }
 
 void arbolBinario_AA_Inventario::borrarAA(nodoBinario_AA_Inventario** raiz, int codigoMarca) {
