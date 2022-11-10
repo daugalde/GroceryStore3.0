@@ -53,7 +53,7 @@ public:
 
 class arbolBinario_AA_Inventario {
 private:
-	void eliminarArbol(nodoBinario_AA_Inventario** raiz);
+	void eliminarArbolInner(nodoBinario_AA_Inventario** raiz);
 	void insertarDerecho(nodoBinario_AA_Inventario** raiz, int CodigoPasillo, int CodigoProducto, int CodigoMarca, string nombre, int CantStock, int CodCan, int nivel);
 	void reparto(nodoBinario_AA_Inventario** raiz);
 	void giro(nodoBinario_AA_Inventario** raiz);
@@ -69,6 +69,8 @@ public:
 	~arbolBinario_AA_Inventario();
 	void borrarNodo(int codigoMarca);
 
+
+	void eliminarArbol(nodoBinario_AA_Inventario** raiz);
 	void actuializarStock(nodoBinario_AA_Inventario* raiz, int CodigoMarca, int cantidad);
 	void InsertarNodo(int CodigoPasillo, int CodigoProducto, int CodigoMarca, string nombre, int CantStock, int CodCan);
 	nodoBinario_AA_Inventario* buscarInv(nodoBinario_AA_Inventario* raiz, int codigoMarca);
