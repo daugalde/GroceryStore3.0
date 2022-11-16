@@ -142,7 +142,16 @@
     <ClInclude Include="AdminDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="BuyDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ClientDashboard.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="MainMenuGrocery.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="ReporDashboard.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="SellerDashboard.h">
@@ -162,7 +171,10 @@
     <ClCompile Include="..\DataStructures\List.cpp" />
     <ClCompile Include="..\DataStructures\Queue.cpp" />
     <ClCompile Include="AdminDashboard.cpp" />
+    <ClCompile Include="BuyDashboard.cpp" />
+    <ClCompile Include="ClientDashboard.cpp" />
     <ClCompile Include="Program.cpp" />
+    <ClCompile Include="ReporDashboard.cpp" />
     <ClCompile Include="SellerDashboard.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -176,8 +188,14 @@
     <EmbeddedResource Include="AdminDashboard.resx">
       <DependentUpon>AdminDashboard.h</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ClientDashboard.resx">
+      <DependentUpon>ClientDashboard.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainMenuGrocery.resx">
       <DependentUpon>MainMenuGrocery.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReporDashboard.resx">
+      <DependentUpon>ReporDashboard.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SellerDashboard.resx">
       <DependentUpon>SellerDashboard.h</DependentUpon>

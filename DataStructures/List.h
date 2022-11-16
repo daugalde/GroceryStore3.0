@@ -24,7 +24,7 @@ public:
 
 	List* Join(List* list);
 
-	void DisplayMostVisitedAisle();
+	string DisplayMostVisitedAisle();
 
 	void DisplayLessVisitedAisle();
 

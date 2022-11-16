@@ -1,6 +1,8 @@
 #pragma once
 #include "AdminDashboard.h"
 #include "SellerDashboard.h"
+#include "ClientDashboard.h"
+#include "ReporDashboard.h"
 #include "../DataStructures/GroceryManager.h"
 
 namespace Program {
@@ -43,11 +45,12 @@ namespace Program {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Button^ adminBtn;
-	protected:
 
+	protected:
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::Button^ sellerBtn;
 	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::Button^ button1;
 
 
 	private:
@@ -69,6 +72,7 @@ namespace Program {
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->sellerBtn = (gcnew System::Windows::Forms::Button());
 			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -100,6 +104,7 @@ namespace Program {
 			this->button2->TabIndex = 2;
 			this->button2->Text = L"Client";
 			this->button2->UseVisualStyleBackColor = true;
+			this->button2->Click += gcnew System::EventHandler(this, &MainMenuGrocery::button2_Click);
 			// 
 			// sellerBtn
 			// 
@@ -122,11 +127,22 @@ namespace Program {
 			this->pictureBox1->TabIndex = 4;
 			this->pictureBox1->TabStop = false;
 			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(304, 446);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(248, 51);
+			this->button1->TabIndex = 5;
+			this->button1->Text = L"Consultas";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &MainMenuGrocery::button1_Click);
+			// 
 			// MainMenuGrocery
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 30);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(895, 476);
+			this->ClientSize = System::Drawing::Size(980, 596);
+			this->Controls->Add(this->button1);
 			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->sellerBtn);
 			this->Controls->Add(this->button2);
@@ -155,9 +171,27 @@ namespace Program {
 		this->Hide();
 		SellerDashboard^ dashboard = gcnew SellerDashboard(this, this->gm);
 		dashboard->ShowDialog();
-		
+
 	}
-private: System::Void MainMenuGrocery_Load(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		ClientDashboard^ dashboard = gcnew ClientDashboard(this, this->gm);
+		dashboard->ShowDialog();
+
+	}
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		ReporDashboard^ dashboard = gcnew ReporDashboard(this, this->gm);
+		dashboard->ShowDialog();
+
+	}
+
+
+
+	private: System::Void MainMenuGrocery_Load(System::Object^ sender, System::EventArgs^ e) {
+	}
+
+	
 };
-}
+};
+

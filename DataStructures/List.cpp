@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 #include "Aisle.h"
 #include "Node.h"
 #include "List.h"
@@ -126,7 +127,7 @@ List* List::Join(List* list)
 	return list;
 }
 
-void List::DisplayMostVisitedAisle()
+string List::DisplayMostVisitedAisle()
 {
 	Node* aux;
 	if (head != NULL) {
@@ -146,14 +147,14 @@ void List::DisplayMostVisitedAisle()
 
 		if (maxVisits != 0)
 		{
-			cout << "\nEl Pasillo mas visitados es: " << maxVisitsName << " con " << maxVisits << " visitas" << endl;
+			 return "\nEl Pasillo mas visitados es: " + maxVisitsName + " con " + to_string( maxVisits) + " visitas" ;
 		}
 		else {
-			cout << "No hay Pasillos visitados" << endl;
+			return "No hay Pasillos visitados" ;
 		}
 	}
 	else {
-		cout << "No hay Pasillos visitados" << endl;
+		return "No hay Pasillos visitados" ;
 	}
 }
 
